@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed Salama | Data Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #161b22;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    nav .logo {
+      font-size: 24px;
+      color: #58a6ff;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    nav .logo:hover {
+      text-shadow: 0 0 10px #58a6ff;
+      transform: scale(1.05);
+    }
+    nav a {
+      color: #c9d1d9;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: 0.3s;
+      position: relative;
+    }
+    nav a:hover {
+      color: #58a6ff;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #58a6ff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(135deg, #1f2937, #0d1117);
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23161b22" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+      background-size: 100% 100%;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #58a6ff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+      transition: all 0.5s ease;
+    }
+    header img:hover {
+      transform: rotate(360deg) scale(1.1);
+    }
+    header h1 {
+      font-size: 48px;
+      color: #58a6ff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+    }
+    header p {
+      font-size: 20px;
+      color: #8b949e;
+      margin-bottom: 20px;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #58a6ff;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      bottom: -10px;
+      left: 25%;
+      background: linear-gradient(90deg, transparent, #58a6ff, transparent);
+      border-radius: 50%;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #30363d;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(88, 166, 255, 0.1),
+        rgba(88, 166, 255, 0)
+      );
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+      opacity: 0;
+    }
+    .card:hover {
+      border-color: #58a6ff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .card:hover::before {
+      opacity: 1;
+      animation: shine 1.5s;
+    }
+    .card h3 {
+      color: #58a6ff;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .card p {
+      position: relative;
+      z-index: 1;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #161b22;
+      font-size: 14px;
+      color: #8b949e;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #58a6ff, transparent);
+    }
+    a.btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #58a6ff;
+      color: #0d1117;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    a.btn:hover {
+      background-color: #1f6feb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(31, 111, 235, 0.4);
+    }
+    a.btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    a.btn:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(20, 20);
+        opacity: 0;
+      }
+    }
+    @keyframes shine {
+      0% {
+        top: -50%;
+        left: -50%;
+      }
+      100% {
+        top: 150%;
+        left: 150%;
+      }
+    }
+    /* Floating animation for header elements */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    /* Pulse animation for buttons */
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(88, 166, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0); }
+    }
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #58a6ff;
+      font-size: 24px;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      z-index: 100;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+      40% { transform: translateY(-20px) translateX(-50%); }
+      60% { transform: translateY(-10px) translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo animate__animated animate__fadeInLeft">Ahmed Salama</div>
+    <div class="animate__animated animate__fadeInRight">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <img src="Me.png" alt="Ahmed Salama Profile Photo" class="floating animate__animated animate__zoomIn" style="width: 400px; height: 400px;">
+    <h1 class="animate__animated animate__fadeIn">Hi, I'm Ahmed Salama</h1>
+    <p class="animate__animated animate__fadeIn animate__delay-1s">Data Analyst | Power BI Specialist</p>
+    <div class="animate__animated animate__fadeIn animate__delay-2s">
+      <a href="#projects" class="btn pulse">View My Work</a>
+      <a href="https://drive.google.com/file/d/1ldl2oAjPQvHpb-kyTlpqXhoEDKaA279D/view?usp=sharing" class="btn" target="_blank">Download CV</a>
+    </div>
+    <div class="scroll-indicator animate__animated animate__fadeIn animate__delay-3s" onclick="scrollToSection('about')">
+      ↓
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align: center; max-width: 800px; margin: auto; font-size: 18px; line-height: 1.6;">
+      I'm a passionate Data Analyst with 1+ year of experience turning raw data into impactful business insights.
+      Specialized in Power BI, SQL, Python, Excel, and DAX. I enjoy building interactive dashboards, automating reports,
+      and helping organizations make data-driven decisions.
+    </p>
+    <div style="text-align: center; margin-top: 30px;">
+      <div style="display: inline-block; text-align: left;">
+        <p style="margin-bottom: 10px;">🔹 Data visualization expert</p>
+        <p style="margin-bottom: 10px;">🔹 Business intelligence specialist</p>
+        <p style="margin-bottom: 10px;">🔹 Data storytelling enthusiast</p>
+        <p>🔹 Continuous learner in data enhineering</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card animate__animated">
+        <h3>📞 Call Center Analysis Dashboard (Power BI)</h3>
+        <p>Analyzed 13K+ calls, automated reporting with DAX and Power BI.</p>
+        <a href="https://www.linkedin.com/posts/ahmed-salama6_powerbi-dataanalytics-businessintelligence-activity-7343350296456097792-DtpS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFBChJUBH4syCJHp9iX1uy7Gz21VNBlRfj4" class="btn" target="_blank">View Project</a>
+      </div>
+      <div class="card animate__animated">
+        <h3>🛒 Amazon Reviews Analysis Dashboard (Power BI)</h3>
+        <p>Visualized 23.7K+ product reviews and discount patterns.</p>
+        <a href="https://www.linkedin.com/posts/ahmed-salama6_amazon-product-reviews-dashboard-activity-7338215783065440258-PpFC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFBChJUBH4syCJHp9iX1uy7Gz21VNBlRfj4" class="btn" target="_blank">View Project</a>
+      </div>
+      <div class="card animate__animated">
+        <h3>🏥 Healthcare Analysis Dashboard (Power BI)</h3>
+        <p>Built KPIs for patient care & hospital cost analysis using DAX.</p>
+        <a href="https://www.linkedin.com/posts/ahmed-salama6_healthcare-dashboard-activity-7337886510442029056-5AHg?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFBChJUBH4syCJHp9iX1uy7Gz21VNBlRfj4" class="btn" target="_blank">View Project</a>
+      </div>
+      <div class="card animate__animated">
+        <h3>📊 Sales Analysis Dashboard (Excel)</h3>
+        <p>Reduced reporting time by 60%, saved $25K+ using Excel dashboards.</p>
+        <a href="https://www.linkedin.com/posts/ahmed-salama6_excel-dataanalysis-dashboarddesign-activity-7305980565999013888-x4DJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFBChJUBH4syCJHp9iX1uy7Gz21VNBlRfj4" class="btn" target="_blank">View Project</a>
+      </div>
+      <div class="card animate__animated">
+        <h3>🩺 Healthcare SQL Analysis</h3>
+        <p>Optimized SQL queries and improved wait times in hospital database.</p>
+        <a href="https://github.com/a-salama6/SQL-Analysis-for-Healthcare-Dataset.git" class="btn" target="_blank">View Project</a>
+      </div>
+      <div class="card animate__animated">
+        <h3>🚗 Road Accident Analysis Dashboard (Excel)</h3>
+        <p>Identified high-risk locations using Excel and PivotTable automation.</p>
+        <a href="https://github.com/a-salama6/Road-Accidents-Dashboard-Excel-.git" class="btn" target="_blank">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card animate__animated"><h3>Power BI</h3><p>Dashboards, DAX, Power Query</p></div>
+      <div class="card animate__animated"><h3>SQL</h3><p>Data analysis, joins, optimization</p></div>
+      <div class="card animate__animated"><h3>Python</h3><p>Pandas, Seaborn, Matplotlib</p></div>
+      <div class="card animate__animated"><h3>Excel</h3><p>PivotTables, Power Pivot</p></div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="grid">
+      <div class="card animate__animated">
+        <h3>Digital Egypt Pioneers Initiative</h3>
+        <p>Completed 6-month training in Power BI, Power Query, Sql, and DAX.</p>
+      </div>
+      <div class="card animate__animated">
+        <h3>365 Skills Bootcamp</h3>
+        <p>Completed Revision on Power Quary , Data Modeling , Power BI , Sql ,Python For data analysis, and Freelancer Tips</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p style="text-align: center; font-size: 18px;">
+      Want to collaborate or work together? Reach out to me!
+    </p>
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="mailto:ahmedsalama3989@gmail.com" class="btn pulse">Email Me</a>
+      <a href="https://www.linkedin.com/in/ahmed-salama6/" class="btn" target="_blank">LinkedIn</a>
+      <a href="https://github.com/a-salama6" class="btn" target="_blank">GitHub</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Ahmed Salama. All rights reserved.
+  </footer>
+
+  <script>
+    // Scroll reveal animation
+    const sections = document.querySelectorAll('section');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Animate cards sequentially
+          const cards = entry.target.querySelectorAll('.card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate__fadeInUp');
+            }, index * 100);
+          });
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Smooth scroll function
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+    
+    // Add ripple effect to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Ripple effect
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        this.appendChild(ripple);
+        
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 1000);
+        
+        // Handle navigation if not external link
+        if (!this.getAttribute('target')) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          }
+        } else {
+          window.open(this.getAttribute('href'), '_blank');
+        }
+      });
+    });
+    
+    // Typewriter effect for header
+    const title = document.querySelector('header h1');
+    const originalText = title.textContent;
+    title.textContent = '';
+    
+    let i = 0;
+    const typeWriter = () => {
+      if (i < originalText.length) {
+        title.textContent += originalText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    };
+    
+    setTimeout(typeWriter, 1000);
+  </script>
+</body>
+</html>
